@@ -6,7 +6,28 @@
              xmlns:local="clr-namespace:WpfOpenDataBerlin.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+    <Grid Width="auto" Height="auto">
+        <ListView HorizontalAlignment="Left" Height="auto" Width="auto" Margin="10,41,0,0" VerticalAlignment="Top" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Titel"/>
+                    <GridViewColumn Header="Author Vorname"/>
+                    <GridViewColumn Header="Author Nachname"/>
+                    <GridViewColumn Header="Erster erscheinungs Ort"/>
+                    <GridViewColumn Header="Zweiter erscheinungs Ort"/>
+                    <GridViewColumn Header="Erst Veröffentlciher"/>
+                    <GridViewColumn Header="Zweit Veröffenticher"/>
+                    <GridViewColumn Header="Zusätzliche Informationen "/>
+                    <GridViewColumn Header="Erst Veröffentlichungsjahr"/>
+                    <GridViewColumn Header="Zweit Veröffentlichkeitsjahr"/>
+                </GridView>
+            </ListView.View>
+            <ListBoxItem Background="{x:Null}"/>
+            <ListBoxItem/>
+            <ListBoxItem/>
+            <ListBoxItem/>
+        </ListView>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Suchen" VerticalAlignment="Top" Width="177"/>
+
     </Grid>
 </UserControl>
