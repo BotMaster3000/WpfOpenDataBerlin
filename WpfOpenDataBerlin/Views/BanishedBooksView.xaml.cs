@@ -24,8 +24,24 @@ namespace WpfOpenDataBerlin.Views
         public BanishedBooksView()
         {
             InitializeComponent();
-            BanishedBooksViewModel viewModel = new BanishedBooksViewModel();
-            this.DataContext = viewModel;
+            BanishedBooksViewModel viewModel = new BanishedBooksViewModel(searchbox.Text);
+            Ausgabe.ItemsSource = viewModel.BookCollection;
+
+        }
+        public void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
+
+        private void searchbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            BanishedBooksViewModel viewModel = new BanishedBooksViewModel(searchbox.Text);
+            Ausgabe.ItemsSource = viewModel.BookCollection;
         }
     }
 }

@@ -13,14 +13,14 @@ namespace WpfOpenDataBerlin.ViewModels
 {
     public class BanishedBooksViewModel : INotifyPropertyChanged
     {
-        ObservableCollection<BanishedBooksModel> BookCollection = new ObservableCollection<BanishedBooksModel>();
+        public ObservableCollection<BanishedBooksModel> BookCollection = new ObservableCollection<BanishedBooksModel>();
 
-        public BanishedBooksViewModel()
+        public BanishedBooksViewModel(string search)
         {
-            InitializeBookArray();
+            InitializeBookArray(search);
         }
 
-        private void InitializeBookArray()
+        private void InitializeBookArray(string search)
         {
             // REFERENZ-LINK daten.berlin.de:
             // https://daten.berlin.de/datensaetze/liste-der-verbannten-b%C3%BCcher-0
@@ -46,6 +46,7 @@ namespace WpfOpenDataBerlin.ViewModels
                     dynamic bookArray = jsonObject.index;
                     foreach (dynamic book in bookArray)
                     {
+                        
                         BanishedBooksModel currentBookToAdd = new BanishedBooksModel()
                         {
                             ID = book["id"],
@@ -67,14 +68,33 @@ namespace WpfOpenDataBerlin.ViewModels
 
                         if (currentBookToAdd.AdditionalInfos != null && currentBookToAdd.AdditionalInfos != "")
                         {
-                            string x = currentBookToAdd.AdditionalInfos;
+                            
+
+                                string x = currentBookToAdd.AdditionalInfos;
+                            
                         }
-                        books.Add(currentBookToAdd);
+                        if (search != "")
+                        {
+                            if (currentBookToAdd.Ocrresult.IndexOf(search) == -1)
+                            {
+                                continue;
+                            }
+                            else
+                            {
+                                books.Add(currentBookToAdd);
+                            }
+                        }
+                        else
+                        {
+                            books.Add(currentBookToAdd);
+                        }
                     }
 
                     BookCollection = books;
                 }
             }
+
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

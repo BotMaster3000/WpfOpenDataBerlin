@@ -6,6 +6,6 @@
         xmlns:local="clr-namespace:WpfOpenDataBerlin"
         xmlns:view="clr-namespace:WpfOpenDataBerlin.Views"
         mc:Ignorable="d"
-        Title="OpenData Berlin OSZ IMT" SizeToContent="WidthAndHeight">
+        Title="OpenData Berlin OSZ IMT" SizeToContent="WidthAndHeight" MaxWidth="800" MaxHeight="500">
     <view:BanishedBooksView />
 </Window>
